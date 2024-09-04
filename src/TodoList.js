@@ -5,7 +5,7 @@ export default function TodoList({todos, toggleTodo, deleteTodo}) {
     
   return (
     <ul className='list'>
-    {todos.length === 0 && "No Todos yet, Add some!!"}
+    {todos.length === 0 && "No Todos yet, Add some !!"}
 
     {todos.map(singleTodo => {
       return (

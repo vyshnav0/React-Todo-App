@@ -1,10 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import NewToDoForm from './NewToDoForm';
 import TodoList from './TodoList';
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(()=>{
+    const localValue = localStorage.getItem("ITEMS")
+    if (localValue== null) return [];
+    return JSON.parse(localValue);
+  });
+
+  useEffect(()=>{
+    localStorage.setItem("ITEMS", JSON.stringify(todos))
+    // stores the info to local storage
+  },[todos])
+  // useEffect takes an array as input and changes runs the function each time that array is changed
+
 
   function addTodo(title){
     setTodos((currentTodos) => {
@@ -15,7 +26,6 @@ function App() {
           }]
         });
   }
-
 
   function toggleTodo(id, completed) {
     setTodos(currentTodos => {
