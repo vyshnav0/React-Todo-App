@@ -31,13 +31,13 @@ You need to have Node.js and npm installed. You can download Node.js from [nodej
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/your-repo.git
+   git clone https://github.com/vyshnav0/React-Todo-App
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd your-repo
+   cd react-todo-app
    ```
 
 3. Install the dependencies:
