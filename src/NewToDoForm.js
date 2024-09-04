@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-export default function NewToDoForm() {
+export default function NewToDoForm(props) {
     const [newItem, setNewitem] = useState("");
     /* useState intakes a default value as inp and here since the new item 
        (the entry someone adds), when webpage starts, its empty
@@ -11,13 +11,9 @@ export default function NewToDoForm() {
         e.preventDefault();
         // prevents reloading each time you submit the form
 
-        // setTodos((currentTodos) => {
-        //   return [...currentTodos, {
-        //     id: crypto.randomUUID(),
-        //     title: newItem,
-        //     completed: false
-        //   }]
-        // });
+        if (newItem === "") return
+        
+        props.myPropOnSubmit(newItem)
         setNewitem("");
     }
     return (

@@ -5,6 +5,17 @@ import NewToDoForm from './NewToDoForm';
 function App() {
   const [todos, setTodos] = useState([]);
 
+  function addTodo(title){
+    setTodos((currentTodos) => {
+          return [...currentTodos, {
+            id: crypto.randomUUID(),
+            title,
+            completed: false
+          }]
+        });
+  }
+
+
   function toggleTodo(id, checked) {
     setTodos(currentTodos => {
       return currentTodos.map(todo => {
@@ -23,7 +34,7 @@ function App() {
   }
   return (
     <>
-      <NewToDoForm />
+      <NewToDoForm myPropOnSubmit={addTodo}/>
       <h1 className='header'>ToDo List</h1>
       <ul className='list'>
         {todos.length === 0 && "No Todos yet, Add some!!"}
