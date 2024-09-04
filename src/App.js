@@ -41,7 +41,7 @@ function App() {
       <ul className='list'>
         {todos.map(singleTodo=>{
           return <li>
-              <label><input type='checkbox' />{singleTodo.title}</label>
+              <label><input type='checkbox' checked={singleTodo.completed}/>{singleTodo.title}</label>
               <button className='btn btn-danger'>Delete</button>
             </li>
         })}
