@@ -22,7 +22,18 @@ function App() {
     });
     setNewitem("");
   }
-  console.log(todos);
+  // console.log(todos);
+
+  function toggleTodo(id, checked) {
+    setTodos(currentTodos => {
+      return currentTodos.map(todo => {
+        if (todo.id === id) {
+          return { ...todo, checked }
+        }
+        return todo; // if we didnt find any todo with that id, which shouldnt be possible 
+      })
+    });
+  }
 
   return (
     <>
@@ -34,7 +45,6 @@ function App() {
             onChange={event => setNewitem(event.target.value)}
             type='text' id='item'>
           </input>
-
         </div>
         <button className='btn'>Add</button>
       </form>
@@ -43,7 +53,11 @@ function App() {
         {todos.map(singleTodo => {
           return (
             <li key={singleTodo.id}>
-              <label><input type='checkbox' checked={singleTodo.completed} />{singleTodo.title}</label>
+              <label>
+                <input type='checkbox' checked={singleTodo.completed}
+                  onChange={e => toggleTodo(singleTodo.id, e.target.checked)}
+                />
+              {singleTodo.title}</label>
               <button className='btn btn-danger'>Delete</button>
             </li>
           )
